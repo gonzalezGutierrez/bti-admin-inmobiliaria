@@ -1,0 +1,72 @@
+.btn-primary {
+    background-color: #5b69bc !important;
+}
+
+.input-danger {
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #E5343D;
+}
+
+.form-control {
+    border-radius: 3px !important;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.form-inline {
+    display: inline-block;
+}
+
+
+
+
+.mt-2 {
+    margin-top: 2px;
+}
+.mt-3 {
+    margin-top: 3px;
+}
+.mt-4 {
+    margin-top: 4px;
+}
+.mt-5 {
+    margin-top: 5px;
+}
+
+
+.activo {
+    background-color:#5b69bc;
+}
+.inactivo {
+    background-color:#E5343D;
+}
+.prospecto {
+    background-color: #EF6C00;
+}
+
+.icon-initial-name {
+    color:white;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
