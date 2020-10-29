@@ -119,12 +119,45 @@
 
                                             {!! Form::open(['url'=>'clientes/'.$cliente->idCliente,'method'=>'delete','class'=>'form-inline']) !!}
 
-                                                <button type="button" class="btn text-uppercase @if($cliente->eliminado == 0) btn-danger @else btn-success @endif btn-xs">
+                                                <button type="button"  data-toggle="modal" data-target="#modalDelete-{{$cliente->idCliente}}" class="btn text-uppercase @if($cliente->eliminado == 0) btn-danger @else btn-success @endif btn-xs">
                                                     <i class="fa @if($cliente->eliminado == 0) fa-trash @else fa-check @endif "></i>
                                                     @if($cliente->eliminado == 0) Eliminar @else Activar @endif
                                                 </button>
 
+                                                <div class="modal fade" id="modalDelete-{{$cliente->idCliente}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header @if($cliente->eliminado == 0) inactivo @else activo @endif">
+                                                                @if($cliente->eliminado == 0)
+                                                                    <h3 class="modal-title text-white text-uppercase" id="exampleModalLabel">¿Desea eliminar al cliente?</h3>
+                                                                @else
+                                                                    <h3 class="modal-title text-white text-uppercase" id="exampleModalLabel">¿Desea activar al cliente?</h3>
+                                                                @endif
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                @if($cliente->eliminado == 0)
+                                                                    <i class="fa fa-trash text-danger" style="font-size: 80px;"></i>
+                                                                @else
+                                                                    <i class="fa fa-check text-success" style="font-size: 80px;"></i>
+                                                                @endif
 
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-inverse" data-dismiss="modal">Cancelar</button>
+                                                                <button type="submit" class="btn @if($cliente->eliminado == 0) btn-danger @else btn-primary @endif">
+                                                                    @if($cliente->eliminado == 0)
+                                                                        Eliminar
+                                                                    @else
+                                                                        Activar
+                                                                    @endif
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                             {!! Form::close() !!}
                                         </td>

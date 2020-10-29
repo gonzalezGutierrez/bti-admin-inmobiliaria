@@ -41,14 +41,18 @@
 }
 
 
-.activo {
+.activo , .administrador {
     background-color:#5b69bc;
 }
 .inactivo {
     background-color:#E5343D;
 }
-.prospecto {
+.prospecto, .agente {
     background-color: #EF6C00;
+}
+
+.alert {
+    border-radius: 2px !important;
 }
 
 .icon-initial-name {

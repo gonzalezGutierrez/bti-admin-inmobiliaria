@@ -17,6 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix'=>'auth'],function(){
+    Route::get('login',  [App\Http\Controllers\AuthController::class, 'form']);
+    Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
+    Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
+
+});
+
+
+
 Route::get('/usuarios',[App\Http\Controllers\UsuarioController::class, 'index']);
 Route::get('/usuarios/create',[App\Http\Controllers\UsuarioController::class, 'create']);
 Route::post('/usuarios', [App\Http\Controllers\UsuarioController::class, 'store']);

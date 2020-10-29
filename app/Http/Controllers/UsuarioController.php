@@ -14,7 +14,8 @@ class UsuarioController extends Controller
 
     public function index()
     {
-
+        $usuarios = User::getUsers()->paginate();
+        return view('administracion.usuarios.index',compact('usuarios'));
     }
 
     public function create()
@@ -49,7 +50,7 @@ class UsuarioController extends Controller
                 ->with('success','El usuario fue registrado correctamente');
 
         }catch(\Exception $exception){
-            dd($exception);
+
             return back()
                 ->with('warning','Un error ocurrio al registrar el usuario');
 

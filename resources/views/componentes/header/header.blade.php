@@ -347,21 +347,20 @@
             <!-- /.Dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="material-icons">person_add</i>
+                    <i class="material-icons">person</i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="profile.html"><i class="ti-user"></i>&nbsp; Profile</a></li>
-                    <li><a href="mailbox.html"><i class="ti-email"></i>&nbsp; My Messages</a></li>
-                    <li><a href="lockscreen.html"><i class="ti-lock"></i>&nbsp; Lock Screen</a></li>
-                    <li><a href="#"><i class="ti-settings"></i>&nbsp; Settings</a></li>
-                    <li><a href="login.html"><i class="ti-layout-sidebar-left"></i>&nbsp; Logout</a></li>
+                    <li><a href="/"><i class="ti-user"></i>&nbsp; {{Auth::user()->nombre}} {{Auth::user()->apellido}}</a></li>
+                    <li><a href="/"><i class="ti-email"></i>&nbsp; My Messages</a></li>
+                    <li><a href="/"><i class="ti-lock"></i>&nbsp; Lock Screen</a></li>
+                    <li><a href="/"><i class="ti-settings"></i>&nbsp; Settings</a></li>
+                    <li><a id="btnLogout" href="#"><i class="ti-layout-sidebar-left"></i>&nbsp; Salir</a></li>
                 </ul><!-- /.dropdown-user -->
             </li><!-- /.Dropdown -->
-            <li class="log_out">
-                <a href="login.html">
-                    <i class="material-icons">power_settings_new</i>
-                </a>
-            </li><!-- /.Log out -->
         </ul> <!-- /.navbar-top-links -->
     </div>
 </nav>
+
+<form action="{{asset('auth/logout')}}" id="formularioLogout" method="POST">
+    @csrf
+</form>

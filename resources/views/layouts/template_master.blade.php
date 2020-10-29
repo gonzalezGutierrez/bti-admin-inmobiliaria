@@ -249,6 +249,13 @@
     function myFunction() {
         window.print();
     }
+
+    let btnLogout        =  document.getElementById('btnLogout');
+    let formularioLogout = document.getElementById('formularioLogout');
+
+    btnLogout.addEventListener("click",function (){
+        formularioLogout.submit();
+    });
 </script>
 </body>
 </html>
