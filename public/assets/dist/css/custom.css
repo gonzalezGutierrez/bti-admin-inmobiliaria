@@ -1,11 +1,16 @@
-.btn-primary {
+.btn-primary , .bg-primary {
     background-color: #5b69bc !important;
 }
+
 
 .input-danger {
     border-radius: 0;
     box-shadow: none;
     border: 1px solid #E5343D;
+}
+
+.form-control-search{
+    height: 100px;
 }
 
 .form-control {
@@ -74,3 +79,31 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+/*PDF STYLE*/
+/*body {
+    margin: 0;
+    position: relative;
+}
+table {
+    background: #fff;
+    width: 100%;
+    border: 0;
+}
+th {
+    background: #000;
+    color: #fff;
+    padding: 5px;
+    position: sticky;
+    text-align: left;
+    top: 0;
+}
+td {
+    border-top: 1px solid #999;
+    padding: 5px;
+}
+tr:nth-child(odd) {
+    background: #ddd;
+}*/
+
+

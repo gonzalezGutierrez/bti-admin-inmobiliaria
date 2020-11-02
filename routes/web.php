@@ -37,3 +37,14 @@ Route::get('/clientes/{id}/edit',[App\Http\Controllers\ClienteController::class,
 Route::put('/clientes/{id}',[App\Http\Controllers\ClienteController::class, 'update']);
 Route::delete('/clientes/{id}',[App\Http\Controllers\ClienteController::class, 'destroy']);
 
+Route::get('fraccionamientos',[App\Http\Controllers\FraccionamientoController::class,'index']);
+Route::get('fraccionamientos/{idFraccionamiento}',[App\Http\Controllers\FraccionamientoController::class,'show']);
+
+Route::get('fraccionamientos/create-information',[App\Http\Controllers\FraccionamientoController::class,'createInformation']);
+Route::get('fraccionamientos/{idFraccionamiento}/create-area-location',[App\Http\Controllers\FraccionamientoController::class,'createAreaLocation']);
+Route::get('fraccionamientos/{idFraccionamiento}/create-add-images',[App\Http\Controllers\FraccionamientoController::class,'createAddImages']);
+
+Route::post('fraccionamientos/store-information',[App\Http\Controllers\FraccionamientoController::class,'storeInformation']);
+Route::post('fraccionamientos/store-area-location',[App\Http\Controllers\FraccionamientoController::class,'storeAreaLocation']);
+Route::get('fraccionamientos/store-add-images',[App\Http\Controllers\FraccionamientoController::class,'storeAddImages']);
+
