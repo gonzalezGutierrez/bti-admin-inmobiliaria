@@ -39,19 +39,19 @@
         @endif
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="panel panel-bd">
-                <div class="panel-heading">
+                <div class="panel-heading bg-primary">
                     <div class="panel-title d-flex">
-                        <div>
-                            <i class="ti-user"></i>
+                        <div class="text-white">
+                            <i class="ti-user text-white"></i>
                             <h4>LISTADO DE CLIENTES</h4>
                         </div>
-                        <i data-toggle="modal" data-target="#modal-filter-customers" class="ti-search pointer"></i>
+                        <i data-toggle="modal" data-target="#modal-filter-customers" class="ti-search text-white pointer"></i>
                     </div>
                     {!! Form::open(['url'=>'clientes','method'=>'GET','id'=>'formFilter']) !!}
                     <div class="modal fade" id="modal-filter-customers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header bg-primary">
                                     <h4 class="modal-title text-uppercase" id="exampleModalLabel">Buscar Clientes</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-hover table-striped">
                             <thead>
                             <tr>
                                 <th>Avatar</th>

@@ -6,7 +6,7 @@
         </div>
         <div class="header-title">
             <h1>Administración - Catalogo de fraccionamientos</h1>
-            <small>Visualiza el listado de fraccionamiento disponibles</small>
+            <small class="text-uppercase">{{$fraccionamientos->count()}} registros encontrados</small>
             <ol class="breadcrumb">
                 <li><a href="/"><i class="pe-7s-home"></i> RESUMEN</a></li>
                 <li class="active">FRACCIONAMIENTOS</li>
@@ -14,181 +14,102 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-7 col-md-7 col-xs-12 col-sm-12" style="height: 600px; overflow-y: scroll;">
-            <div class="row">
-                <div class=" col-lg-12 col-xs-12 col-sm-12 col-md-12">
-                    <div class="panel">
-                        <div class="panel-heading bg-primary d-flex">
-                            <strong>Fraccionamiento :</strong> <span class="text-bold">Nombre del fraccionamiento</span>
+
+        <div class="col-12 col-md-12 col-lg-12 col-xs-12 col-sm-12">
+
+
+            <div class="panel panel-bd">
+                <div class="panel-heading bg-primary">
+                    <div class="panel-title d-flex">
+                        <div class="text-white">
+                            <i class="ti-home text-white"></i>
+                            <h4>LISTADO DE FRACCIONAMIENTOS</h4>
                         </div>
-                        <div class="panel-body">
-                            <table class="table table-bordered table-responsive">
-                                <thead>
-                                <tr>
-                                    <th class="text-uppercase">Empresa</th>
-                                    <th class="text-left">Axicasa</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Ciudad</th>
-                                    <th class="text-left">N Ciudad</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Dirección</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, repudiandae!</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Descripción</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at blanditiis, iusto minima necessitatibus optio.</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-map-marker"></i> Ver en mapa</a>
-                        </div>
+                        <form action="{{asset('/fraccionamientos')}}" method="GET">
+                            <input type="search" class="form-control" value="{{$like}}" name="like" placeholder="Buscar...">
+                        </form>
                     </div>
                 </div>
-                <div class=" col-lg-12 col-xs-12 col-sm-12 col-md-12">
-                    <div class="panel">
-                        <div class="panel-heading bg-primary d-flex">
-                            <strong>Fraccionamiento :</strong> <span class="text-bold">Nombre del fraccionamiento</span>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-bordered table-responsive">
-                                <thead>
-                                <tr>
-                                    <th class="text-uppercase">Empresa</th>
-                                    <th class="text-left">Axicasa</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Ciudad</th>
-                                    <th class="text-left">N Ciudad</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Dirección</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, repudiandae!</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Descripción</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at blanditiis, iusto minima necessitatibus optio.</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-map-marker"></i> Ver en mapa</a>
-                        </div>
+
+                <div class="panel-body">
+
+                    <div class="text-right">
+                        <a href="{{asset('fraccionamientos/create-information')}}" class="btn btn-primary"> <span class="fa fa-plus"></span> Nuevo</a>
                     </div>
-                </div>
-                <div class=" col-lg-12 col-xs-12 col-sm-12 col-md-12">
-                    <div class="panel">
-                        <div class="panel-heading bg-primary d-flex">
-                            <strong>Fraccionamiento :</strong> <span class="text-bold">Nombre del fraccionamiento</span>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-bordered table-responsive">
-                                <thead>
-                                <tr>
-                                    <th class="text-uppercase">Empresa</th>
-                                    <th class="text-left">Axicasa</th>
+
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ID Fraccionamiento</th>
+                                <th class="text-center">Fraccionamiento</th>
+                                <th class="text-center">Empresa</th>
+                                <th class="text-center">Ubicación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($fraccionamientos as $fraccionamiento)
+                                <tr class="text-center">
+                                    <td>{{$fraccionamiento->idFraccionamiento}}</td>
+                                    <td class="text-uppercase">{{$fraccionamiento->fraccionamiento}}</td>
+                                    <td>{{$fraccionamiento->empresa}}</td>
+                                    <td>{{$fraccionamiento->municipio}} {{$fraccionamiento->estado}}</td>
+                                    <td>
+                                        <a href="{{asset('fraccionamientos/'.$fraccionamiento->idFraccionamiento)}}" class="btn btn-primary btn-sm"><i class="fa fa-chevron-circle-right"></i></a>
+                                        <a href="{{asset('fraccionamientos/'.$fraccionamiento->idFraccionamiento.'/edit-information')}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                        {!! Form::open(['url'=>'','class'=>'form-inline','method'=>'PATCH']) !!}
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        {!! Form::close() !!}
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <th class="text-uppercase">Ciudad</th>
-                                    <th class="text-left">N Ciudad</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Dirección</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, repudiandae!</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Descripción</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at blanditiis, iusto minima necessitatibus optio.</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-map-marker"></i> Ver en mapa</a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-lg-12 col-xs-12 col-sm-12 col-md-12">
-                    <div class="panel">
-                        <div class="panel-heading bg-primary d-flex">
-                            <strong>Fraccionamiento :</strong> <span class="text-bold">Nombre del fraccionamiento</span>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-bordered table-responsive">
-                                <thead>
-                                <tr>
-                                    <th class="text-uppercase">Empresa</th>
-                                    <th class="text-left">Axicasa</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Ciudad</th>
-                                    <th class="text-left">N Ciudad</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Dirección</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, repudiandae!</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Descripción</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at blanditiis, iusto minima necessitatibus optio.</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-map-marker"></i> Ver en mapa</a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-lg-12 col-xs-12 col-sm-12 col-md-12">
-                    <div class="panel">
-                        <div class="panel-heading bg-primary d-flex">
-                            <strong>Fraccionamiento :</strong> <span class="text-bold">Nombre del fraccionamiento</span>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-bordered table-responsive">
-                                <thead>
-                                <tr>
-                                    <th class="text-uppercase">Empresa</th>
-                                    <th class="text-left">Axicasa</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Ciudad</th>
-                                    <th class="text-left">N Ciudad</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Dirección</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, repudiandae!</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-uppercase">Descripción</th>
-                                    <th class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at blanditiis, iusto minima necessitatibus optio.</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-map-marker"></i> Ver en mapa</a>
-                        </div>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        {{$fraccionamientos->links()}}
                     </div>
                 </div>
             </div>
 
+
         </div>
-        <div class="col-lg-5 col-md-5 col-xs-12 col-sm-12">
-            <div class="panel">
-                <div class="panel-heading bg-primary d-flex">
-                    <span>Ubicaciones de fraccionamientos</span>
-                    <i class="i fa fa-search-minus"></i>
-                </div>
-                <div class="panel-body" style="padding: 0px !important;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122259.72191803117!2d-93.19961034460368!3d16.745985738251548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd85611d06e8f%3A0xdd78bd7b4662216a!2sTuxtla%20Guti%C3%A9rrez%2C%20Chis.!5e0!3m2!1ses!2smx!4v1604083475477!5m2!1ses!2smx" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+        {{--@foreach($fraccionamientos as $fraccionamiento)
+            <div class=" col-lg-6 col-xs-12 col-sm-12 col-md-6">
+                <div class="panel">
+                    <div class="panel-heading bg-primary d-flex">
+                        <strong>Fraccionamiento :</strong> <span class="text-bold text-uppercase">{{$fraccionamiento->fraccionamiento}}</span>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                            <tr>
+                                <th class="text-uppercase">Empresa</th>
+                                <th class="text-left">{{$fraccionamiento->empresa}}</th>
+                            </tr>
+                            <tr>
+                                <th class="text-uppercase">Estado</th>
+                                <th class="text-left">{{$fraccionamiento->estado}}</th>
+                            </tr>
+                            <tr>
+                                <th class="text-uppercase">Ciudad</th>
+                                <th class="text-left">{{$fraccionamiento->municipio}}</th>
+                            </tr>
+                            <tr>
+                                <th class="text-uppercase">Dirección</th>
+                                <th class="text-left">{{$fraccionamiento->direccion}}</th>
+                            </tr>
+                            <tr>
+                                <th class="text-uppercase">Descripción</th>
+                                <th class="text-left">{{$fraccionamiento->descripcion}}</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <a href="" class="btn btn-primary btn-sm"><i class="fa fa-map-marker"></i> Ver en mapa</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach--}}
     </div>
 @stop

@@ -14,7 +14,9 @@ class CreateCatEmpresasTable extends Migration
     public function up()
     {
         Schema::create('cat_empresas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('idEmpresa');
+            $table->string('empresa');
+            $table->tinyInteger('eliminado')->default(0);
             $table->timestamps();
         });
     }
